@@ -2,13 +2,15 @@ import {createStore} from 'redux';
 
 const initialState = {
     todos: [
-        {
-            name: "Do the homework",
+        {   
+            id:1,
+            description: "Do the homework",
             status: 1
         },
         {
-            name: "Do the dishes",
-            status: 1
+            id:2,
+            description: "Do the dishes",
+            status: 0
         }
     ],
     done: []
