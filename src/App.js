@@ -1,21 +1,22 @@
-import React from 'react'
-import ToDoApp from './components/ToDoApp'
-import "./styles/styles.scss"
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import './styles/styles.scss';
+import { Route, Switch, Redirect, BrowserRouter as Router } from "react-router-dom";
+import Home from './components/Home';
 
-const App = () => (
-<>
-    <div className='topnav'>
-      <h2> To Do App <span>🗓</span></h2>
-    </div>
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Redirect exact from="/" to="/todo" />
+          <Route exact path="/:page?" render={props => <Home {...props} />} />
 
-    <div className="App">
-      <ToDoApp />
-    </div>
-
-    <div className='footer'>
-      <p> Copyright &copy; Uriel Ventura with love ❤️  from D.R 🇩🇴</p>
-    </div>
-</>
+        </Switch> 
+      </Router>
+    </Provider>
   )
+}
 
 export default App
