@@ -17,7 +17,9 @@ const Done = () => {
 
 
     return (
-    <Container maxWidth="md"> 
+    <Container maxWidth="md">
+        <br/>
+        <br/>
         <Typography variant="h6">
             Done Items
         </Typography>
@@ -25,6 +27,7 @@ const Done = () => {
         <List>
                 {
                     doneItems.map ( t =>(
+                        <>
                         <ListItem key={t.id} onClick={() => setDoneStatus(t)} disabled={t.status === 1 ? true : false}>
                             <ListItemButton >
                                 <ListItemIcon>
@@ -36,12 +39,13 @@ const Done = () => {
                             <ListItemText id={t.id} primary={t.description} />
                             </ListItemButton>
                         </ListItem>
+                        <Divider />
+                        </>
                         
                     ))
                 }
         </List>
-        <Divider />
-</Container>
+    </Container>
     )
 }
 

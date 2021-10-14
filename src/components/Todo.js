@@ -5,8 +5,6 @@ import { ListItemButton,ListItemIcon,Checkbox, ListItemText, Button} from '@mui/
 
 const Todo = () => {
     const todosItems = useSelector(state => state.todo.todos);
-    console.log('✅');
-    console.log(todosItems);
     const [todo, setTodo] = useState('');
     const [todoError, setTodoError] = useState(false)
     const dispatch = useDispatch();
