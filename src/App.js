@@ -12,8 +12,6 @@ const App = () => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Router>
-
-
           <div>
             <AppBar position="static" variant="outlined" color="default">
               <Tabs>
@@ -24,8 +22,7 @@ const App = () => {
                     <Tab value="two"label="Done ✅"></Tab>
                   </Link>
               </Tabs>
-            </AppBar>
-              
+            </AppBar>              
           </div>
           <Switch>
             <Redirect exact from="/" to="/todo" />

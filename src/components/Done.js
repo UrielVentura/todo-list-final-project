@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect, useSelector, useDispatch } from 'react-redux'
+import {useSelector, useDispatch } from 'react-redux'
 import { Container, Divider, List, ListItem, Typography} from '@material-ui/core'
 import { ListItemButton,ListItemIcon,Checkbox, ListItemText} from '@mui/material'
 
@@ -28,18 +28,18 @@ const Done = () => {
                 {
                     doneItems.map ( t =>(
                         <>
-                        <ListItem key={t.id} onClick={() => setDoneStatus(t)} disabled={t.status === 1 ? true : false}>
-                            <ListItemButton >
-                                <ListItemIcon>
-                                    <Checkbox
-                                    edge="start"
-                                    checked={t.status === 1 ? 1 : 0}
-                                    />
-                                </ListItemIcon>
-                            <ListItemText id={t.id} primary={t.description} />
-                            </ListItemButton>
-                        </ListItem>
-                        <Divider />
+                            <ListItem key={t.id} onClick={() => setDoneStatus(t)} disabled={t.status === 1 ? true : false}>
+                                <ListItemButton >
+                                    <ListItemIcon>
+                                        <Checkbox
+                                        edge="start"
+                                        checked={t.status === 1 ? 1 : 0}
+                                        />
+                                    </ListItemIcon>
+                                <ListItemText id={t.id} primary={t.description} />
+                                </ListItemButton>
+                            </ListItem>
+                            <Divider />
                         </>
                         
                     ))
@@ -49,4 +49,4 @@ const Done = () => {
     )
 }
 
-export default connect(null, null)(Done)
+export default Done
