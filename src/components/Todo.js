@@ -4,7 +4,9 @@ import { Container, Divider, List, ListItem, TextField, Typography} from '@mater
 import { ListItemButton,ListItemIcon,Checkbox, ListItemText, Button} from '@mui/material'
 
 const Todo = () => {
-    const todosItems = useSelector(state => state.todos);
+    const todosItems = useSelector(state => state.todo.todos);
+    console.log('✅');
+    console.log(todosItems);
     const [todo, setTodo] = useState('');
     const [todoError, setTodoError] = useState(false)
     const dispatch = useDispatch();
@@ -70,7 +72,7 @@ const Todo = () => {
                             </>
                             
                         ))
-                    }
+                        }
             </List>
         </Container>
     )

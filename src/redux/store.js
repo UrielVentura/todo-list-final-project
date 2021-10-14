@@ -1,4 +1,6 @@
-import {createStore} from 'redux';
+import {createStore,combineReducers} from 'redux';
+import {persistStore,persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const initialState = {
     todos: [],
@@ -6,7 +8,17 @@ const initialState = {
 
 };
 
-const reducerToDo = (state = initialState, action) => {
+
+
+/*const retrieveObject=(nameObj)=>{
+    return JSON.parse(localStorage.getItem(nameObj));
+}
+
+const saveObject = (obj)=>{
+    localStorage.setItem(obj.name, obj);
+}*/
+
+const todoreducer = (state = initialState, action) => {
     switch (action.type) {
         case "UPDATE_TODO":
             action.todo.status = 1;
@@ -32,8 +44,22 @@ const reducerToDo = (state = initialState, action) => {
     }
 };
 
+const reducer = combineReducers({
+    todo: todoreducer,
+});
 
-export default createStore(
-    reducerToDo,
+const persistConfig = {
+    key: "root",
+    storage
+};
+
+const persistedReducer = persistReducer(persistConfig, reducer);
+
+export const store = createStore(
+    persistedReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
 )
+
+
+export const persistor = persistStore(store);

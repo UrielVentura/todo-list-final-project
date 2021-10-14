@@ -5,7 +5,7 @@ import { ListItemButton,ListItemIcon,Checkbox, ListItemText} from '@mui/material
 
 const Done = () => {
 
-    const doneItems = useSelector(state => state.done);
+    const doneItems = useSelector(state => state.todo.done);
     const dispatch = useDispatch();
 
     const setDoneStatus = (todo) =>{
