@@ -8,16 +8,6 @@ const initialState = {
 
 };
 
-
-
-/*const retrieveObject=(nameObj)=>{
-    return JSON.parse(localStorage.getItem(nameObj));
-}
-
-const saveObject = (obj)=>{
-    localStorage.setItem(obj.name, obj);
-}*/
-
 const todoreducer = (state = initialState, action) => {
     switch (action.type) {
         case "UPDATE_TODO":
