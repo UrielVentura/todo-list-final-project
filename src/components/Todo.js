@@ -57,12 +57,10 @@ const Todo = () => {
           Add
         </button>
         <br />
-        {todoError ? (
+        {todoError && (
           <label style={{ color: 'red', fontSize: '12px' }}>
             This field must not be empty
           </label>
-        ) : (
-          <div></div>
         )}
       </div>
 
