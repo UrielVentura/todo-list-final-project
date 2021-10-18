@@ -66,7 +66,7 @@ const Todo = () => {
         )}
       </div>
 
-      <h2>Todo Items</h2>
+      <h2 style={{ margin: '100px' }}>Todo Items</h2>
 
       <ul>
         {todosItems.map(t => (
