@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 const Todo = () => {
-  const todosItems = useSelector((state) => state.todo.todos);
-  const [todo, setTodo] = useState("");
+  const todosItems = useSelector(state => state.todo.todos);
+  const [todo, setTodo] = useState('');
   const [todoError, setTodoError] = useState(false);
   const dispatch = useDispatch();
 
-  const setTodoStatus = (todo) => {
+  const setTodoStatus = todo => {
     dispatch({
-      type: "UPDATE_TODO",
+      type: 'UPDATE_TODO',
       todo,
     });
   };
@@ -21,28 +21,28 @@ const Todo = () => {
       status: 0,
     };
 
-    if (todo === "") {
+    if (todo === '') {
       setTodoError(true);
       return;
     }
 
     dispatch({
-      type: "ADD_TODO",
+      type: 'ADD_TODO',
       todo: newTodo,
     });
-    setTodo("");
+    setTodo('');
   };
 
   return (
     <div className="todoPanel">
       <div className="newTodoForm">
         <input
-          className={todoError ? "inputNewTodo inputError" : "inputNewTodo"}
+          className={todoError ? 'inputNewTodo inputError' : 'inputNewTodo'}
           type="text"
           id="new-todo"
           placeholder="New an item..."
           value={todo}
-          onChange={(e) => {
+          onChange={e => {
             setTodo(e.target.value);
             setTodoError(false);
           }}
@@ -58,7 +58,7 @@ const Todo = () => {
         </button>
         <br />
         {todoError ? (
-          <label style={{ color: "red", fontSize: "12px" }}>
+          <label style={{ color: 'red', fontSize: '12px' }}>
             This field must not be empty
           </label>
         ) : (
@@ -69,18 +69,14 @@ const Todo = () => {
       <h2>Todo Items</h2>
 
       <ul>
-        {todosItems.map((t) => (
-          <>
-            <li
-              key={t.id}
-              onClick={() => setTodoStatus(t)}
-              className="listItem"
-            >
+        {todosItems.map(t => (
+          <div key={t.id}>
+            <li onClick={() => setTodoStatus(t)} className="listItem">
               <input type="checkbox" id={t.id} />
               {t.description}
             </li>
             <hr />
-          </>
+          </div>
         ))}
       </ul>
     </div>
