@@ -1,13 +1,13 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 const Done = () => {
-  const doneItems = useSelector(state => state.todo.done);
+  const doneItems = useSelector((state) => state.todo.done);
   const dispatch = useDispatch();
 
-  const setDoneStatus = todo => {
+  const setDoneStatus = (todo) => {
     dispatch({
-      type: 'UPDATE_DONE',
+      type: "UPDATE_DONE",
       todo,
     });
   };
@@ -18,12 +18,14 @@ const Done = () => {
       <h2>Done Items</h2>
 
       <ul>
-        {doneItems.map(t => (
-          <li key={t.id} className="" onClick={() => setDoneStatus(t)}>
-            <input type="checkbox" id={t.id} />
-            {t.description}
+        {doneItems.map((t) => (
+          <>
+            <li key={t.id} onClick={() => setDoneStatus(t)} className="checked">
+              <input type="checkbox" checked id={t.id} />
+              {t.description}
+            </li>
             <hr />
-          </li>
+          </>
         ))}
       </ul>
     </div>
