@@ -1,52 +1,33 @@
-import React from 'react'
-import {useSelector, useDispatch } from 'react-redux'
-import { Container, Divider, List, ListItem, Typography} from '@material-ui/core'
-import { ListItemButton,ListItemIcon,Checkbox, ListItemText} from '@mui/material'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Done = () => {
+  const doneItems = useSelector(state => state.todo.done);
+  const dispatch = useDispatch();
 
-    const doneItems = useSelector(state => state.todo.done);
-    const dispatch = useDispatch();
+  const setDoneStatus = todo => {
+    dispatch({
+      type: 'UPDATE_DONE',
+      todo,
+    });
+  };
 
-    const setDoneStatus = (todo) =>{
-        dispatch({
-            type: "UPDATE_DONE",
-            todo
-        })
-    };
+  return (
+    <div className="donePanel">
+      <br />
+      <h2>Done Items</h2>
 
+      <ul>
+        {doneItems.map(t => (
+          <li key={t.id} className="" onClick={() => setDoneStatus(t)}>
+            <input type="checkbox" id={t.id} />
+            {t.description}
+            <hr />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-    return (
-    <Container maxWidth="md">
-        <br/>
-        <br/>
-        <Typography variant="h6">
-            Done Items
-        </Typography>
-
-        <List>
-                {
-                    doneItems.map ( t =>(
-                        <>
-                            <ListItem key={t.id} onClick={() => setDoneStatus(t)} disabled={t.status === 1 ? true : false}>
-                                <ListItemButton >
-                                    <ListItemIcon>
-                                        <Checkbox
-                                        edge="start"
-                                        checked={t.status === 1 ? 1 : 0}
-                                        />
-                                    </ListItemIcon>
-                                <ListItemText id={t.id} primary={t.description} />
-                                </ListItemButton>
-                            </ListItem>
-                            <Divider />
-                        </>
-                        
-                    ))
-                }
-        </List>
-    </Container>
-    )
-}
-
-export default Done
+export default Done;

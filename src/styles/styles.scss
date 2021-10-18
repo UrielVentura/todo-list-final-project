@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  background-color: #333;
+  color: white;
+  border-radius: 0px 0px 15px 15px;
+  height: 50px;
+
+  .link {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    margin: 50px;
+    font-size: 25px;
+  }
+
+  :hover {
+    background-color: rgba(255, 255, 255, 0.329);
+  }
+}
+
+.todoPanel {
+  margin: 100px;
+
+  .inputNewTodo {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+  }
+  .newTodoForm {
+    margin-left: 80px;
+    margin-bottom: 50px;
+  }
+}
